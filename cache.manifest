@@ -1,7 +1,20 @@
 CACHE MANIFEST 
 # v1.0 
-# 06/09/2020-22:00:57.44 
+# 06/09/2020-14:00:57.44 
 
 index.html
+hen.html
+hen_ok.html
+hen_error.html
+hen_cache.html
+hen_cache_ok.html
+animation.html
 exp_webkit.js
 exp_kernelHEN.js
+js/script.js
+css/css.css
+css/error.css
+css/font.woff2
+css/style.css
+css/styles.css
+css/success.css

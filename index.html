@@ -5,18 +5,19 @@
       <title>PS4 6.72 Hen 离线破解</title>
 
       <script>
+		  window.isCached = true;
         function DLProgress(e) {
-			alert(1)
+		  if (window.isCached) {
+			document.getElementById("xiframe").src = "hen_cache.html";
+		  }
+		  window.isCached = false;
           Percent = Math.round((e.loaded / e.total) * 100);
-          window.msgs.innerHTML = "Installing Offline Cache: " + Percent + "%";
+          document.getElementById('cacheProgress').innerHTML = Percent + "%";
         }
         function DisplayCacheProgress() {
           setTimeout(function () {
-            window.msgs.innerHTML = "Cache Installed Successfully";
-          }, 1000);
-          setTimeout(function () {
-            window.msgs.innerHTML = "Now Close And Re-Open Your Browser";
-          }, 3000);
+			document.getElementById("xiframe").src = "hen_cache_ok.html";
+          }, 5000);
         }
         window.applicationCache.addEventListener("progress", DLProgress, false);
         window.applicationCache.oncached = function (e) {
@@ -24,13 +25,14 @@
         };
         window.applicationCache.onupdateready = function (e) {
           DisplayCacheProgress();
-        };
+		};
       </script>
 
       <script src="exp_webkit.js"></script>
     </head>
 
-    <body onload="load_exploit_HEN()">
+	<body onload="load_exploit_HEN()">
+	  <span id="cacheProgress" style="position: absolute;bottom: 20px;right: 20px;"></span>
       <iframe
         frameborder="0"
         scrolling="no"
@@ -42,10 +44,10 @@
       <iframe
         frameborder="0"
         scrolling="no"
-        id="xiframe"
+        id="xiframe2"
         src="animation.html"
         width="100%"
-        height="400px"
+        height="500px"
       ></iframe>
       <div style="display: none">
         Pass = <span id="passCounter"></span> Fail =
@@ -67,7 +69,9 @@
           }
           function loadScript() {
             getScript("exp_kernelHEN.js", function () {
-              setTimeout(jailbreak, 3000);
+				if (window.isCached) {
+					setTimeout(jailbreak, 3000);
+				}
             });
           }
           loadScript();
