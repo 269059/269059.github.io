@@ -1,67 +1,77 @@
 <html manifest="cache.manifest">
-<html lang="en">
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>PS4 6.72 Hen 离线破解</title>
 
-<head>
-	<meta charset="UTF-8">
-	<title>PS4 6.72 Hen 自动破解</title>
+      <script>
+        function DLProgress(e) {
+          Percent = Math.round((e.loaded / e.total) * 100);
+          window.msgs.innerHTML = "Installing Offline Cache: " + Percent + "%";
+        }
+        function DisplayCacheProgress() {
+          setTimeout(function () {
+            window.msgs.innerHTML = "Cache Installed Successfully";
+          }, 1000);
+          setTimeout(function () {
+            window.msgs.innerHTML = "Now Close And Re-Open Your Browser";
+          }, 3000);
+        }
+        window.applicationCache.addEventListener("progress", DLProgress, false);
+        window.applicationCache.oncached = function (e) {
+          DisplayCacheProgress();
+        };
+        window.applicationCache.onupdateready = function (e) {
+          DisplayCacheProgress();
+        };
+      </script>
 
-	<script>
-		function DLProgress(e) {
-			Percent = (Math.round(e.loaded / e.total * 100));
-			window.msgs.innerHTML = "Installing Offline Cache: " + Percent + "%";
-		}
-		function DisplayCacheProgress() {
-			setTimeout(function () {
-				window.msgs.innerHTML = "Cache Installed Successfully";
-			}, 1000);
-			setTimeout(function () { window.msgs.innerHTML = "Now Close And Re-Open Your Browser"; }, 3000);
-		}
-		window.applicationCache.addEventListener("progress", DLProgress, false);
-		window.applicationCache.oncached = function (e) {
-			DisplayCacheProgress();
-		};
-		window.applicationCache.onupdateready = function (e) {
-			DisplayCacheProgress();
-		};
-	</script>
+      <script src="exp_webkit.js"></script>
+    </head>
 
-	<script src="exp_webkit.js"></script>
-</head>
+    <body onload="load_exploit_HEN()">
+      <iframe
+        frameborder="0"
+        scrolling="no"
+        id="xiframe"
+        src="hen.html"
+        width="100%"
+        height="200px"
+      ></iframe>
+      <iframe
+        frameborder="0"
+        scrolling="no"
+        id="xiframe"
+        src="animation.html"
+        width="100%"
+        height="400px"
+      ></iframe>
+      <div style="display: none">
+        Pass = <span id="passCounter"></span> Fail =
+        <span id="failCounter"></span>
+      </div>
+      <script>
+        if (localStorage.passcount == null) localStorage.passcount = 0;
+        window.passCounter.innerHTML = localStorage.passcount;
+        if (localStorage.failcount == null) localStorage.failcount = 0;
+        window.failCounter.innerHTML = localStorage.failcount;
 
-<body onload="load_exploit_HEN()">
-	<iframe frameborder="0" scrolling="no" id="xiframe" src="hen.html" width="100%" height="200px"></iframe>
-	<iframe frameborder="0" scrolling="no" id="xiframe" src="animation.html" width="100%" height="400px"></iframe>
-	<div style="display: none;">Pass = <span id=passCounter></span>Fail = <span id=failCounter></span></div>
-	<script>
-		function xxx() {
-			setTimeout(function () {
-				document.getElementById("xiframe").src = "hen_ok.html";
-			}, 5000);
-		}
-
-		if (localStorage.passcount == null) localStorage.passcount = 0;
-		window.passCounter.innerHTML = localStorage.passcount;
-		if (localStorage.failcount == null) localStorage.failcount = 0;
-		window.failCounter.innerHTML = localStorage.failcount;
-
-		function load_exploit_HEN() {
-			msgs.innerHTML = "<h1 style='font-size:25px;text-align:center;'>Loading Exploit And HEN ...</h1>";
-			LoadedMSG = "Exploit And HEN Loaded ✔ - Press Circle To Exit";
-			function getScript(source, callback) {
-				var gs = document.createElement('script');
-				gs.src = source;
-				gs.onload = callback;
-				gs.async = false;
-				document.body.appendChild(gs);
-			}
-			function loadScript() {
-				getScript("exp_kernelHEN.js", function () {
-					setTimeout(jailbreak, 500);
-				});
-			}
-			loadScript();
-		}
-	</script>
-</body>
-
+        function load_exploit_HEN() {
+          function getScript(source, callback) {
+            var gs = document.createElement("script");
+            gs.src = source;
+            gs.onload = callback;
+            gs.async = false;
+            document.body.appendChild(gs);
+          }
+          function loadScript() {
+            getScript("exp_kernelHEN.js", function () {
+              setTimeout(jailbreak, 3000);
+            });
+          }
+          loadScript();
+        }
+      </script>
+    </body>
+  </html>
 </html>
