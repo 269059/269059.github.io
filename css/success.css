@@ -1,0 +1,7 @@
+:root {
+  --stroke: #0A1C20;
+  --text: #FEDC0C;
+  --bg: #81f1a4;
+  --duration: 550ms;
+  --easing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
